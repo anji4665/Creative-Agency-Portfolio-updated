@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="About Stackly Creative Agency — 12+ years of award-winning design, 30+ creative experts, and 320+ projects delivered.">
+  <title>About — Stackly Creative Agency</title>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
+:root {
+  --black: #0A0A0F; --surface: #141420; --surface-light: #1C1C2E;
+  --violet: #7C3AED; --violet-light: #A855F7; --violet-glow: rgba(124, 58, 237, 0.25);
+  --coral: #FF6B35; --coral-light: #FF8F65; --coral-glow: rgba(255, 107, 53, 0.2);
+  --white: #FFFFFF; --warm-white: #F5F0EB;
+  --gray-100: #E5E1DC; --gray-300: #A8A4A0; --gray-500: #6B6966; --gray-700: #3A3A4A;
+  --font-heading: 'Outfit', sans-serif; --font-body: 'Inter', sans-serif;
+  --radius-sm: 10px; --radius-md: 16px; --radius-lg: 24px; --radius-xl: 32px;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --transition: 0.4s var(--ease-out);
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; font-size: 16px; -webkit-font-smoothing: antialiased; }
+body { font-family: var(--font-body); background: var(--black); color: var(--white); overflow-x: hidden; line-height: 1.6; }
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+img { max-width: 100%; height: auto; display: block; }
+.container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.section { padding: 110px 0; position: relative; }
+.section-label { font-family: var(--font-heading); font-size: 0.82rem; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--violet-light); margin-bottom: 14px; display: inline-flex; align-items: center; gap: 10px; }
+.section-label::before { content: ''; width: 30px; height: 2px; background: linear-gradient(90deg, var(--violet), var(--coral)); border-radius: 2px; }
+.section-title { font-family: var(--font-heading); font-size: clamp(2.2rem, 4.5vw, 3.2rem); font-weight: 800; line-height: 1.12; margin-bottom: 18px; }
+.section-subtitle { font-size: 1.05rem; color: var(--gray-300); max-width: 540px; line-height: 1.75; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 15px 34px; font-family: var(--font-heading); font-size: 0.95rem; font-weight: 600; border-radius: 50px; border: none; cursor: pointer; transition: all var(--transition); position: relative; overflow: hidden; }
+.btn-primary { background: linear-gradient(135deg, var(--violet), var(--violet-light)); color: var(--white); box-shadow: 0 4px 24px var(--violet-glow); }
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 36px rgba(124, 58, 237, 0.4); }
+.btn-outline { background: transparent; color: var(--white); border: 2px solid var(--gray-700); }
+.btn-outline:hover { border-color: var(--violet); color: var(--violet-light); background: rgba(124, 58, 237, 0.06); }
+.btn-coral { background: linear-gradient(135deg, var(--coral), var(--coral-light)); color: var(--white); box-shadow: 0 4px 24px var(--coral-glow); }
+.btn-coral:hover { transform: translateY(-3px); box-shadow: 0 8px 36px rgba(255, 107, 53, 0.4); }
+
+/* NAVBAR */
+.navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 20px 0; transition: all var(--transition); }
+.navbar.scrolled { background: rgba(10, 10, 15, 0.88); backdrop-filter: blur(24px) saturate(180%); -webkit-backdrop-filter: blur(24px) saturate(180%); border-bottom: 1px solid rgba(255,255,255,0.04); padding: 14px 0; }
+.nav-inner { display: flex; align-items: center; justify-content: space-between; }
+.logo { display: inline-flex; align-items: center; z-index: 1001; }
+.logo-img { height: 42px; width: auto; display: block; }
+.nav-links { display: flex; align-items: center; gap: 36px; }
+.nav-links a { font-size: 0.9rem; font-weight: 500; color: var(--gray-300); position: relative; padding: 4px 0; transition: color var(--transition); }
+.nav-links a::after { content: ''; position: absolute; bottom: -3px; left: 0; width: 0; height: 2px; background: linear-gradient(90deg, var(--violet), var(--coral)); border-radius: 2px; transition: width var(--transition); }
+.nav-links a:hover, .nav-links a.active { color: var(--white); }
+.nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+.hamburger { display: none; flex-direction: column; gap: 6px; cursor: pointer; z-index: 1001; padding: 8px; }
+.hamburger span { width: 26px; height: 2.5px; background: var(--white); border-radius: 4px; transition: all var(--transition); transform-origin: center; }
+.hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
+.hamburger.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
+.mobile-nav { display: none; position: fixed; inset: 0; background: rgba(10, 10, 15, 0.97); backdrop-filter: blur(30px); z-index: 999; flex-direction: column; align-items: center; justify-content: center; gap: 28px; opacity: 0; pointer-events: none; transition: opacity var(--transition); }
+.mobile-nav.open { opacity: 1; pointer-events: all; }
+.mobile-nav a { font-family: var(--font-heading); font-size: 1.8rem; font-weight: 700; color: var(--gray-300); transform: translateY(20px); opacity: 0; transition: all var(--transition); }
+.mobile-nav.open a { transform: translateY(0); opacity: 1; }
+.mobile-nav a:nth-child(1) { transition-delay: 0.08s; }
+.mobile-nav a:nth-child(2) { transition-delay: 0.14s; }
+.mobile-nav a:nth-child(3) { transition-delay: 0.2s; }
+.mobile-nav a:nth-child(4) { transition-delay: 0.26s; }
+.mobile-nav a:nth-child(5) { transition-delay: 0.32s; }
+.mobile-nav a:nth-child(6) { transition-delay: 0.38s; }
+.mobile-nav a:hover { color: var(--violet-light); }
+
+/* PAGE HEADER */
+.page-header { padding: 180px 0 80px; text-align: center; position: relative; overflow: hidden; background: linear-gradient(135deg, var(--black) 0%, var(--surface) 100%); }
+.page-header::before { content: ''; position: absolute; top: -30%; right: -10%; width: 500px; height: 500px; background: radial-gradient(circle, var(--violet-glow) 0%, transparent 70%); }
+.page-header::after { content: ''; position: absolute; bottom: -30%; left: -10%; width: 400px; height: 400px; background: radial-gradient(circle, var(--coral-glow) 0%, transparent 70%); }
+.page-header .container { position: relative; z-index: 2; }
+.page-header h1 { font-family: var(--font-heading); font-size: clamp(2.4rem, 5vw, 3.8rem); font-weight: 900; line-height: 1.1; margin-bottom: 16px; letter-spacing: -1px; }
+.page-header p { font-size: 1.1rem; color: var(--gray-300); max-width: 620px; margin: 0 auto; }
+.gradient-text { background: linear-gradient(135deg, var(--violet-light), var(--coral)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+/* ABOUT MAIN */
+.about-section { background: var(--black); }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.about-image { position: relative; border-radius: var(--radius-lg); overflow: hidden; }
+.about-image img { width: 100%; height: 480px; object-fit: cover; border-radius: var(--radius-lg); }
+.about-image::after { content: ''; position: absolute; inset: 0; border-radius: var(--radius-lg); border: 1px solid rgba(124, 58, 237, 0.15); pointer-events: none; }
+.about-exp { position: absolute; bottom: -16px; right: 24px; background: linear-gradient(135deg, var(--violet), var(--coral)); color: var(--white); padding: 20px 26px; border-radius: var(--radius-md); text-align: center; box-shadow: 0 8px 30px var(--violet-glow); }
+.about-exp .num { font-family: var(--font-heading); font-size: 2.4rem; font-weight: 900; line-height: 1; }
+.about-exp .label { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+.about-text .section-subtitle { margin-bottom: 22px; }
+.about-text p { font-size: 0.98rem; color: var(--gray-300); line-height: 1.75; margin-bottom: 16px; }
+
+/* MISSION / VISION */
+.mv-section { background: var(--surface); }
+.mv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 40px; }
+.mv-card { padding: 44px 36px; background: rgba(20, 20, 32, 0.7); border: 1px solid rgba(255,255,255,0.05); border-radius: var(--radius-lg); transition: all var(--transition); position: relative; overflow: hidden; }
+.mv-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--violet), var(--coral)); }
+.mv-card:hover { transform: translateY(-6px); border-color: rgba(124, 58, 237, 0.2); box-shadow: 0 16px 48px rgba(0,0,0,0.3); }
+.mv-icon { width: 60px; height: 60px; border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 22px; }
+.mv-icon.violet { background: rgba(124, 58, 237, 0.12); color: var(--violet-light); }
+.mv-icon.coral { background: rgba(255, 107, 53, 0.12); color: var(--coral-light); }
+.mv-card h3 { font-family: var(--font-heading); font-size: 1.4rem; font-weight: 700; margin-bottom: 12px; }
+.mv-card p { font-size: 0.95rem; color: var(--gray-300); line-height: 1.75; }
+
+/* VALUES */
+.values-section { background: var(--black); }
+.values-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 40px; }
+.value-card { text-align: center; padding: 36px 24px; background: var(--surface); border: 1px solid rgba(255,255,255,0.05); border-radius: var(--radius-lg); transition: all var(--transition); }
+.value-card:hover { transform: translateY(-6px); border-color: rgba(124, 58, 237, 0.2); box-shadow: 0 16px 48px rgba(0,0,0,0.3); }
+.value-icon { width: 56px; height: 56px; border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; background: rgba(124, 58, 237, 0.12); color: var(--violet-light); }
+.value-card:nth-child(even) .value-icon { background: rgba(255, 107, 53, 0.12); color: var(--coral-light); }
+.value-card h4 { font-family: var(--font-heading); font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; }
+.value-card p { font-size: 0.85rem; color: var(--gray-300); line-height: 1.6; }
+
+/* TEAM */
+.team-section { background: var(--surface); }
+.team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 40px; }
+.team-card { text-align: center; padding: 32px 20px; background: rgba(20, 20, 32, 0.7); border: 1px solid rgba(255,255,255,0.05); border-radius: var(--radius-lg); transition: all var(--transition); }
+.team-card:hover { transform: translateY(-6px); border-color: rgba(124, 58, 237, 0.2); box-shadow: 0 16px 48px rgba(0,0,0,0.3); }
+.team-avatar { width: 90px; height: 90px; border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-weight: 900; font-size: 1.8rem; color: var(--white); background: linear-gradient(135deg, var(--violet), var(--coral)); }
+.team-card:nth-child(even) .team-avatar { background: linear-gradient(135deg, var(--coral), var(--violet)); }
+.team-card h4 { font-family: var(--font-heading); font-size: 1.05rem; font-weight: 700; margin-bottom: 4px; }
+.team-card .role { font-size: 0.82rem; color: var(--violet-light); font-weight: 600; margin-bottom: 10px; }
+.team-card p { font-size: 0.82rem; color: var(--gray-300); line-height: 1.6; }
+
+/* STATS */
+.stats { padding: 80px 0; background: var(--black); border-top: 1px solid rgba(255,255,255,0.04); border-bottom: 1px solid rgba(255,255,255,0.04); position: relative; overflow: hidden; }
+.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
+.stat-item { text-align: center; }
+.stat-number { font-family: var(--font-heading); font-size: clamp(2.6rem, 4.5vw, 3.4rem); font-weight: 900; background: linear-gradient(135deg, var(--violet-light), var(--coral)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 4px; }
+.stat-label { font-size: 0.88rem; color: var(--gray-500); font-weight: 500; }
+
+/* TIMELINE */
+.timeline-section { background: var(--black); }
+.timeline { position: relative; max-width: 900px; margin: 40px auto 0; }
+.timeline::before { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; background: linear-gradient(180deg, var(--violet), var(--coral)); transform: translateX(-50%); opacity: 0.3; }
+.timeline-item { display: flex; align-items: center; margin-bottom: 40px; position: relative; }
+.timeline-item:nth-child(odd) { flex-direction: row-reverse; }
+.timeline-content { width: 45%; padding: 26px 28px; background: var(--surface); border: 1px solid rgba(255,255,255,0.05); border-radius: var(--radius-md); transition: all var(--transition); }
+.timeline-content:hover { border-color: rgba(124, 58, 237, 0.2); transform: scale(1.02); }
+.timeline-year { font-family: var(--font-heading); font-size: 1.3rem; font-weight: 800; color: var(--violet-light); margin-bottom: 6px; }
+.timeline-content h4 { font-family: var(--font-heading); font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
+.timeline-content p { font-size: 0.85rem; color: var(--gray-300); line-height: 1.6; }
+.timeline-dot { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 16px; height: 16px; border-radius: 50%; background: var(--coral); border: 3px solid var(--black); box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.3); z-index: 2; }
+
+/* CTA */
+.cta { padding: 110px 0; position: relative; overflow: hidden; background: var(--surface); }
+.cta-inner { position: relative; border-radius: var(--radius-xl); padding: 90px 60px; text-align: center; overflow: hidden; background: linear-gradient(135deg, rgba(124, 58, 237, 0.08) 0%, rgba(255, 107, 53, 0.06) 100%); border: 1px solid rgba(124, 58, 237, 0.12); }
+.cta-inner::before { content: ''; position: absolute; top: -40%; left: -20%; width: 140%; height: 180%; background: radial-gradient(circle at 30% 50%, var(--violet-glow) 0%, transparent 50%), radial-gradient(circle at 70% 50%, var(--coral-glow) 0%, transparent 50%); pointer-events: none; }
+.cta-content { position: relative; z-index: 1; }
+.cta-title { font-family: var(--font-heading); font-size: clamp(2.2rem, 4.5vw, 3.2rem); font-weight: 900; margin-bottom: 16px; line-height: 1.12; }
+.cta-desc { font-size: 1.05rem; color: var(--gray-300); max-width: 500px; margin: 0 auto 36px; line-height: 1.75; }
+.cta-actions { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; }
+
+/* FOOTER */
+.footer { background: rgba(0,0,0,0.3); border-top: 1px solid rgba(255,255,255,0.04); padding: 70px 0 30px; }
+.footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 50px; }
+.footer-brand .logo { margin-bottom: 16px; }
+.footer-brand p { font-size: 0.88rem; color: var(--gray-500); line-height: 1.7; max-width: 280px; margin-bottom: 20px; }
+.footer-socials { display: flex; gap: 10px; }
+.footer-social { width: 38px; height: 38px; border-radius: 10px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: center; color: var(--gray-500); transition: all var(--transition); }
+.footer-social:hover { background: rgba(124, 58, 237, 0.12); color: var(--violet-light); border-color: rgba(124, 58, 237, 0.2); transform: translateY(-2px); }
+.footer-social svg { width: 16px; height: 16px; }
+.footer-col h4 { font-family: var(--font-heading); font-size: 0.95rem; font-weight: 700; margin-bottom: 20px; }
+.footer-col ul { display: flex; flex-direction: column; gap: 12px; }
+.footer-col li a { font-size: 0.88rem; color: var(--gray-500); transition: all 0.2s; }
+.footer-col li a:hover { color: var(--violet-light); padding-left: 4px; }
+.footer-contact { display: flex; flex-direction: column; gap: 12px; }
+.footer-contact li { display: flex; align-items: flex-start; gap: 10px; font-size: 0.88rem; line-height: 1.5; color: var(--gray-500); }
+.footer-contact svg { flex-shrink: 0; width: 16px; height: 16px; margin-top: 3px; color: var(--violet-light); }
+.footer-contact a, .footer-contact span { color: var(--gray-500); transition: color 0.2s; }
+.footer-contact a:hover { color: var(--violet-light); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.05); padding-top: 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+.footer-bottom p { font-size: 0.8rem; color: var(--gray-700); }
+.footer-bottom-links { display: flex; gap: 24px; }
+.footer-bottom-links a { font-size: 0.8rem; color: var(--gray-700); }
+.footer-bottom-links a:hover { color: var(--violet-light); }
+
+.reveal { opacity: 0; transform: translateY(40px); transition: all 0.7s var(--ease-out); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-left { opacity: 0; transform: translateX(-40px); transition: all 0.7s var(--ease-out); }
+.reveal-left.visible { opacity: 1; transform: translateX(0); }
+.reveal-right { opacity: 0; transform: translateX(40px); transition: all 0.7s var(--ease-out); }
+.reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+@media (max-width: 1024px) {
+  .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  .mv-grid { grid-template-columns: 1fr; }
+  .values-grid { grid-template-columns: repeat(2, 1fr); }
+  .team-grid { grid-template-columns: repeat(2, 1fr); }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  .section { padding: 70px 0; }
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .mobile-nav { display: flex; }
+  .page-header { padding: 130px 0 60px; }
+  .values-grid { grid-template-columns: 1fr; }
+  .team-grid { grid-template-columns: 1fr; }
+  .about-image img { height: 300px; }
+  .timeline::before { left: 20px; }
+  .timeline-item, .timeline-item:nth-child(odd) { flex-direction: column; padding-left: 50px; }
+  .timeline-dot { left: 20px; }
+  .timeline-content { width: 100%; }
+  .cta-inner { padding: 50px 24px; }
+  .footer-grid { grid-template-columns: 1fr; gap: 30px; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+}
+@media (max-width: 480px) {
+  .container { padding: 0 16px; }
+  .stats-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+  .cta-actions { flex-direction: column; }
+  .cta-actions .btn { width: 100%; max-width: 300px; }
+}
+@media (max-width: 768px) {
+  html,
+  body {
+    width: 100%;
+    overflow-x: hidden;
+  }
+}
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="logo" aria-label="Stackly — Home">
+        <img src="./images/Stackly_logo.webp" alt="Stackly" class="logo-img" width="150" height="42">
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="work.html">Work</a>
+        <a href="about.html" class="active">About</a>
+        <a href="Contact.html">Contact</a>
+        <a href="login.html" class="btn btn-primary" style="padding: 10px 26px; font-size: 0.88rem;">Login</a>
+      </div>
+      <div class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <div class="mobile-nav" id="mobile-nav">
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="work.html">Work</a>
+    <a href="about.html">About</a>
+    <a href="Contact.html">Contact</a>
+    <a href="login.html" class="btn btn-primary">Login</a>
+  </div>
+
+  <!-- PAGE HEADER -->
+  <section class="page-header">
+    <div class="container">
+      <div class="section-label reveal" style="justify-content: center;">About Us</div>
+      <h1 class="reveal">Where Creativity<br><span class="gradient-text">Meets Strategy</span></h1>
+      <p class="reveal">A team of 30+ designers, developers, and strategists building bold brands for ambitious companies worldwide.</p>
+    </div>
+  </section>
+
+  <!-- ABOUT MAIN -->
+  <section class="section about-section">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-image reveal-left">
+          <img src="images/about.webp" alt="Stackly creative team at work">
+          <div class="about-exp">
+            <div class="num">12+</div>
+            <div class="label">Years of<br>Creativity</div>
+          </div>
+        </div>
+        <div class="about-text reveal-right">
+          <div class="section-label">Our Story</div>
+          <h2 class="section-title">From a Small Studio<br>to a Global Agency</h2>
+          <p class="section-subtitle">What started in 2014 as a two-person design studio has grown into a full-service creative agency trusted by brands across 15 countries.</p>
+          <p>We believe great design isn't just beautiful — it's purposeful. Every brand identity, every website, every campaign we craft is built with strategic intent and obsessive attention to detail.</p>
+          <p>Today, our team of 30+ award-winning creatives serves clients ranging from ambitious startups to Fortune 500 companies, delivering work that moves people and markets.</p>
+          <a href="contact.html" class="btn btn-primary" style="margin-top: 12px;">
+            <i data-lucide="message-circle" style="width:18px;height:18px;"></i>
+            Work With Us
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MISSION / VISION -->
+  <section class="section mv-section">
+    <div class="container">
+      <div style="text-align:center;" class="reveal">
+        <div class="section-label" style="justify-content:center;">Our Purpose</div>
+        <h2 class="section-title">Mission & Vision</h2>
+      </div>
+      <div class="mv-grid">
+        <div class="mv-card reveal">
+          <div class="mv-icon violet"><i data-lucide="target" style="width:28px;height:28px;"></i></div>
+          <h3>Our Mission</h3>
+          <p>To help ambitious brands stand out in a crowded digital world through bold, purposeful design that drives measurable growth.</p>
+        </div>
+        <div class="mv-card reveal">
+          <div class="mv-icon coral"><i data-lucide="eye" style="width:28px;height:28px;"></i></div>
+          <h3>Our Vision</h3>
+          <p>To become the go-to creative partner for 1,000+ global brands, known for pushing creative boundaries without ever sacrificing clarity or craft.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUES -->
+  <section class="section values-section">
+    <div class="container">
+      <div style="text-align:center;" class="reveal">
+        <div class="section-label" style="justify-content:center;">Our Values</div>
+        <h2 class="section-title">What We Stand For</h2>
+        <p class="section-subtitle" style="margin: 0 auto;">The principles that guide every project, every partnership, every pixel.</p>
+      </div>
+      <div class="values-grid">
+        <div class="value-card reveal">
+          <div class="value-icon"><i data-lucide="sparkles" style="width:26px;height:26px;"></i></div>
+          <h4>Craft</h4>
+          <p>We obsess over every detail — from kerning to conversion rates.</p>
+        </div>
+        <div class="value-card reveal">
+          <div class="value-icon"><i data-lucide="zap" style="width:26px;height:26px;"></i></div>
+          <h4>Speed</h4>
+          <p>We move fast without breaking quality. Momentum matters.</p>
+        </div>
+        <div class="value-card reveal">
+          <div class="value-icon"><i data-lucide="users" style="width:26px;height:26px;"></i></div>
+          <h4>Partnership</h4>
+          <p>We treat every client relationship as a long-term collaboration.</p>
+        </div>
+        <div class="value-card reveal">
+          <div class="value-icon"><i data-lucide="award" style="width:26px;height:26px;"></i></div>
+          <h4>Excellence</h4>
+          <p>We deliver nothing less than work we're proud to sign our name on.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item reveal"><div class="stat-number" data-target="320" data-suffix="+">0</div><div class="stat-label">Projects Delivered</div></div>
+        <div class="stat-item reveal"><div class="stat-number" data-target="48" data-suffix="">0</div><div class="stat-label">Design Awards</div></div>
+        <div class="stat-item reveal"><div class="stat-number" data-target="98" data-suffix="%">0</div><div class="stat-label">Client Satisfaction</div></div>
+        <div class="stat-item reveal"><div class="stat-number" data-target="30" data-suffix="+">0</div><div class="stat-label">Creative Experts</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section class="section team-section">
+    <div class="container">
+      <div style="text-align:center;" class="reveal">
+        <div class="section-label" style="justify-content:center;">Leadership</div>
+        <h2 class="section-title">Meet the Team</h2>
+        <p class="section-subtitle" style="margin: 0 auto;">The creative minds behind the work that moves brands forward.</p>
+      </div>
+      <div class="team-grid">
+        <div class="team-card reveal">
+          <div class="team-avatar">SK</div>
+          <h4>Sara Khan</h4>
+          <div class="role">Founder & Creative Director</div>
+          <p>15+ years in brand design, ex-Pentagram & IDEO.</p>
+        </div>
+        <div class="team-card reveal">
+          <div class="team-avatar">MR</div>
+          <h4>Marco Rossi</h4>
+          <div class="role">Head of Design</div>
+          <p>Led design systems for 3 unicorn startups.</p>
+        </div>
+        <div class="team-card reveal">
+          <div class="team-avatar">LT</div>
+          <h4>Lina Torres</h4>
+          <div class="role">Strategy Director</div>
+          <p>Former brand strategist for Nike & Airbnb.</p>
+        </div>
+        <div class="team-card reveal">
+          <div class="team-avatar">JW</div>
+          <h4>James Wu</h4>
+          <div class="role">Tech Lead</div>
+          <p>Full-stack engineer, WebGL & creative coding expert.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section class="section timeline-section">
+    <div class="container">
+      <div style="text-align:center;" class="reveal">
+        <div class="section-label" style="justify-content:center;">Our Journey</div>
+        <h2 class="section-title">Milestones</h2>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item reveal">
+          <div class="timeline-content">
+            <div class="timeline-year">2014</div>
+            <h4>Founded in Salem</h4>
+            <p>Started as a two-person design studio serving local brands.</p>
+          </div>
+          <div class="timeline-dot"></div>
+        </div>
+        <div class="timeline-item reveal">
+          <div class="timeline-content">
+            <div class="timeline-year">2018</div>
+            <h4>First Global Client</h4>
+            <p>Partnered with a Fortune 500 tech company on brand refresh.</p>
+          </div>
+          <div class="timeline-dot"></div>
+        </div>
+        <div class="timeline-item reveal">
+          <div class="timeline-content">
+            <div class="timeline-year">2021</div>
+            <h4>Motion & 3D Studio</h4>
+            <p>Launched dedicated motion design and 3D animation division.</p>
+          </div>
+          <div class="timeline-dot"></div>
+        </div>
+        <div class="timeline-item reveal">
+          <div class="timeline-content">
+            <div class="timeline-year">2023</div>
+            <h4>25 Design Awards</h4>
+            <p>Recognized by Awwwards, CSS Design Awards, and FWA.</p>
+          </div>
+          <div class="timeline-dot"></div>
+        </div>
+        <div class="timeline-item reveal">
+          <div class="timeline-content">
+            <div class="timeline-year">2026</div>
+            <h4>Global Expansion</h4>
+            <p>Serving clients across 15 countries with 30+ team members.</p>
+          </div>
+          <div class="timeline-dot"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="container">
+      <div class="cta-inner reveal">
+        <div class="cta-content">
+          <div class="section-label" style="justify-content: center;">Let's Collaborate</div>
+          <h2 class="cta-title">Ready to Work<br><span class="gradient-text">Together?</span></h2>
+          <p class="cta-desc">Have a project in mind? We'd love to hear it. Book a free discovery call and let's explore what's possible.</p>
+          <div class="cta-actions">
+            <a href="contact.html" class="btn btn-primary"><i data-lucide="calendar" style="width:18px;height:18px;"></i>Book a Call</a>
+            <a href="work.html" class="btn btn-outline"><i data-lucide="eye" style="width:18px;height:18px;"></i>See Our Work</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo"><img src="./images/Stackly_logo.webp" alt="Stackly" class="logo-img" width="150" height="42"></a>
+          <p>A creative agency that designs bold brands and digital experiences for ambitious companies worldwide.</p>
+          <div class="footer-socials">
+            <a href="404.html" class="footer-social" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+            <a href="404.html" class="footer-social" aria-label="Twitter"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+            <a href="404.html" class="footer-social" aria-label="GitHub"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+            <a href="404.html" class="footer-social" aria-label="YouTube"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.43z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="services.html">Brand Identity</a></li>
+            <li><a href="services.html">Web Design</a></li>
+            <li><a href="services.html">UI/UX Design</a></li>
+            <li><a href="services.html">Motion Design</a></li>
+            <li><a href="services.html">Creative Strategy</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Quick links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="work.html">Work</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul class="footer-contact">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+              <a href="https://www.google.com/maps/place/Stackly/@11.6829566,78.1714049,17z/data=!3m1!4b1!4m6!3m5!1s0x3babefef7fd970bb:0xe11aef1a71994f9!8m2!3d11.6829566!4d78.1739798!16s%2Fg%2F11l660s35r?authuser=0&entry=ttu&g_ep=EgoyMDI2MTAxMi4wIKXMDSoASAFQAw%3D%3D"
+                 target="_blank" rel="noopener noreferrer">MMR Complex, Salem, Tamil Nadu 636008</a>
+            </li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg><a href="tel:+916281115858">+91 62811 15858</a></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><a href="mailto:hello@stackly.farm">hello@stackly.farm</a></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span>Mon–Fri: 9AM – 6PM</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Stackly Creative Agency. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="404.html">Privacy</a>
+          <a href="404.html">Terms</a>
+          <a href="404.html">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+document.addEventListener('DOMContentLoaded', () => {
+  const navbar = document.querySelector('.navbar');
+  window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 50), { passive: true });
+
+  const hamburger = document.querySelector('.hamburger');
+  const mobileNav = document.querySelector('.mobile-nav');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    mobileNav.classList.toggle('open');
+    document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : '';
+  });
+  mobileNav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('active');
+      mobileNav.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => revealObserver.observe(el));
+
+  const counters = document.querySelectorAll('.stat-number');
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        if (el.dataset.counted) return;
+        el.dataset.counted = 'true';
+        const target = parseInt(el.dataset.target, 10);
+        const suffix = el.dataset.suffix || '';
+        const duration = 2200;
+        const start = performance.now();
+        function tick(now) {
+          const elapsed = now - start;
+          const progress = Math.min(elapsed / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          el.textContent = Math.floor(eased * target).toLocaleString() + suffix;
+          if (progress < 1) requestAnimationFrame(tick);
+          else el.textContent = target.toLocaleString() + suffix;
+        }
+        requestAnimationFrame(tick);
+        counterObserver.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+  counters.forEach(el => counterObserver.observe(el));
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        const navH = navbar.offsetHeight;
+        const pos = target.getBoundingClientRect().top + window.scrollY - navH - 10;
+        window.scrollTo({ top: pos, behavior: 'smooth' });
+      }
+    });
+  });
+});
+lucide.createIcons();
+  </script>
+</body>
+</html>
